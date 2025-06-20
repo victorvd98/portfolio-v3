@@ -1,0 +1,282 @@
+@font-face {
+    font-family: 'PPMondwest-Regular';
+    src: url(./fonts/PPMondwest-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'PPNeueMontreal-Medium';
+    src: url(./fonts/PPNeueMontreal-Medium.otf) format('opentype');
+}
+
+body {
+    background-color: #FFF;
+    min-height: 100vh;
+    color: #2c2c2c;
+    font-family: 'PPNeueMontreal-Medium', serif;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.intro {
+    max-width: none;
+    margin: 0;
+    padding: 2rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    line-height: 1.5;
+    text-align: left;
+    color: #2c2c2c;
+}
+
+h1 {
+    font-family: 'PPMondwest-Regular', serif;
+    font-style: italic;
+    display: inline;
+    color: #2c2c2c;
+    font-size: clamp(2.0rem, 4vw, 2.8rem);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+    max-width: 100%;
+    /* Ensure the grid container doesn't exceed the viewport width */
+    width: 100%;
+    /* Scale the grid container to fit the viewport */
+    box-sizing: border-box;
+    /* Include padding and border in width calculations */
+    padding: 0.5rem;
+    /* Add padding without causing overflow */
+}
+
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        aspect-ratio: 2/3;
+    }
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Ensure grid items scale within their container */
+    box-sizing: border-box;
+    /* Prevent overflow caused by padding or borders */
+    height: 100%;
+}
+
+.item {
+    text-decoration: none;
+    color: #2c2c2c;
+    font-family: 'PPMondwest-Regular', serif;
+    font-style: italic;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item span {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    /* Adjust font size dynamically */
+    font-weight: bold;
+    /* Optional: Make the text bold for better visibility */
+    text-align: center;
+    /* Ensure the text is centered */
+}
+
+.circle {
+    border: 1px solid #2c2c2c;
+    border-radius: 50%;
+    width: 90%;
+    height: 90%;
+    aspect-ratio: 1;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circle:hover {
+    background-color: #ff8a94;
+    border-color: #ff8a94;
+    color: #f0f0f0;
+}
+
+.diamond {
+    width: 70%;
+    height: 70%;
+    aspect-ratio: 1;
+    transform: rotate(45deg);
+    border: 1px solid #2c2c2c;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.diamond:hover {
+    background-color: #b799ff;
+    border-color: #b799ff;
+    color: #f0f0f0;
+}
+
+.diamond span {
+    transform: rotate(-45deg);
+    display: block;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #2c2c2c;
+}
+
+.diamond:hover span {
+    color: #f0f0f0;
+}
+
+.rounded-square-outline {
+    width: 90%;
+    height: 90%;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    border: 1px solid #2c2c2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rounded-square-outline:hover {
+    background-color: #7dd87d;
+    border-color: #7dd87d;
+    color: #f0f0f0;
+}
+
+.rounded-square-outline:hover .item {
+    color: #f0f0f0;
+}
+
+.oval-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.oval {
+    width: 90%;
+    height: 35%;
+    border-radius: 50%;
+    margin: 0;
+    border: 1px solid #2c2c2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #2c2c2c;
+}
+
+.oval:nth-child(1):hover {
+    background-color: #66b3ff;
+    border-color: #66b3ff;
+    color: #f0f0f0;
+}
+
+.oval:nth-child(2):hover {
+    background-color: #ffcc66;
+    border-color: #ffcc66;
+    color: #f0f0f0;
+}
+
+.ascii {
+    font-family: monospace;
+    font-size: clamp(0.6rem, 1.5vw, 1rem);
+    line-height: 1.2;
+    white-space: pre;
+    color: #2c2c2c;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    margin: 2rem 0 0 0;
+    font-size: 0.9rem;
+    max-width: none;
+    text-align: left;
+    padding: 2rem;
+    border-top: 1px solid #2c2c2c;
+    color: #2c2c2c;
+}
+
+footer a {
+    color: #2c2c2c;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: #2c2c2c;
+    text-decoration-thickness: 2px;
+}
+
+a {
+    color: inherit;
+    /* Use the parent element's color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline;
+    /* Optional: Add underline on hover */
+}
+
+.ascii pre {
+    margin: 0;
+    transform: scale(clamp(0.6, 1.5vw, 1.2));
+}
+
+.grid-item {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.grid-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.grid-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.grid-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.grid-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.grid-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.grid-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
