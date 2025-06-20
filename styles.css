@@ -121,8 +121,8 @@ h1 {
 }
 
 .diamond:hover {
-    background-color: #b799ff;
-    border-color: #b799ff;
+    background-color: #836953;
+    border-color: #836953;
     color: #f0f0f0;
 }
 
@@ -234,9 +234,13 @@ a {
     /* Remove underline */
 }
 
-a:hover {
+#accenture-song {
     text-decoration: underline;
-    /* Optional: Add underline on hover */
+    text-decoration-skip-ink: none;
+}
+
+#accenture-song:hover {
+    color: #966fd6;
 }
 
 .ascii pre {
