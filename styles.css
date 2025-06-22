@@ -219,12 +219,6 @@ footer {
 footer a {
     color: #2c2c2c;
     text-decoration: underline;
-    transition: all 0.3s ease;
-}
-
-footer a:hover {
-    color: #2c2c2c;
-    text-decoration-thickness: 2px;
 }
 
 a {
