@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'PPMondwest-Regular';
+    src: url(./fonts/PPMondwest-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'PPNeueMontreal-Medium';
+    src: url(./fonts/PPNeueMontreal-Medium.otf) format('opentype');
+}
+
+body {
+margin: 0;
+padding: 0;
+font-family: 'PPNeueMontreal-Medium', sans-serif;
+background-color: #ffffff;
+color: #2c2c2c;
+line-height: 1.6;
+}
+
+.container {
+max-width: 100% vw;
+margin: 0 auto;
+padding: 2rem;
+}
+
+.header {
+margin-bottom: 2rem;
+}
+
+.name {
+font-family: 'Playfair Display', serif;
+font-style: italic;
+font-size: 2rem;
+margin: 0;
+font-weight: 400;
+}
+
+.name a {
+color: #2c2c2c;
+text-decoration: none;
+}
+
+.name a:hover {
+text-decoration: underline;
+}
+
+.work-archive, .work-name {
+font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 2rem;
+}
+
+.work-archive a {
+color: #2c2c2c;
+text-decoration: none;
+}
+
+.work-archive a:hover {
+text-decoration: underline;
+}
+
+.project-description {
+font-size: 1.1rem;
+margin-bottom: 3rem;
+}
+
+.image-container {
+margin-bottom: 3rem;
+}
+
+.caseboard {
+width: 100%;
+height: auto;
+display: block;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+footer {
+    
+    font-size: 0.9rem;
+    max-width: none;
+    text-align: left;
+    padding: 2rem;
+    border-top: 1px solid #2c2c2c;
+    color: #2c2c2c;
+}
+
+footer a {
+    color: #2c2c2c;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+.container {
+padding: 1.5rem;
+}
+
+.name {
+font-size: 1.5rem;
+}
+
+.project-title {
+font-size: 2rem;
+}
+}
