@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Van Damme - Work Archive</title>
+<link rel="stylesheet" href="work-styles.css" >
+
+</head>
+<body>
+<div class="container">
+<div class="left">
+<h1>Victor Van Damme</h1>
+</div>
+<div class="right">
+<ul class="project-list">
+<li class="project-item" 
+    onmouseenter="showPreview('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="#">Spicy Food Delivery App</a></h2>
+<p class="project-year">2024</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('https://images.unsplash.com/photo-1493612276216-ee3925520721?w=600&h=800&fit=crop')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="#">Ariana Grande Fan Site</a></h2>
+<p class="project-year">2024</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=400&fit=crop')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="#">Brussels Creative Agency</a></h2>
+<p class="project-year">2023</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=700&fit=crop')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="#">Plant Death Predictor</a></h2>
+<p class="project-year">2023</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=300&fit=crop')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="#">Global Food Festival</a></h2>
+<p class="project-year">2023</p>
+</li>
+</ul>
+<div class="preview-container" id="previewContainer">
+<div class="preview-placeholder">Hover over a project to see preview</div>
+</div>
+</div>
+</div>
+    <footer>
+        Credits: This site was designed and developed by me using basic HTML/CSS/JavaScript.<br />
+        The text is set in Mondwest and Neue Montreal, both by <a href="https://pangrampangram.com/">Pangram
+            Pangram</a>.<br />
+        The ASCII art is my own but inspired by the work of <a
+            href="https://oldcompcz.github.io/jgs/joan_stark/index-2.html">Joan Stark</a>.
+    </footer>
+
+<script>
+function showPreview(imageUrl) {
+const container = document.getElementById('previewContainer');
+container.innerHTML = `<img src="${imageUrl}" alt="Project preview" class="preview-image">`;
+container.classList.add('visible');
+}
+
+function hidePreview() {
+const container = document.getElementById('previewContainer');
+container.classList.remove('visible');
+setTimeout(() => {
+if (!container.classList.contains('visible')) {
+container.innerHTML = '<div class="preview-placeholder">Hover over a project to see preview</div>';
+}
+}, 300);
+}
+</script>
+</body>
+</html>
