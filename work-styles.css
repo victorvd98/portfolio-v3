@@ -120,9 +120,10 @@ margin-bottom: 0;
 }
 
 .project-title {
-font-size: 1.1rem;
+font-size: clamp(1.4rem, 2vw, 2.0rem);
 font-weight: 400;
 margin: 0;
+text-decoration: none;
 }
 
 .project-title a {
