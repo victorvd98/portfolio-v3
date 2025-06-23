@@ -61,17 +61,25 @@ content: " — About";
 font-size: clamp(1.8rem, 4vw, 2.4rem);
 font-family: 'PPNeueMontreal-Medium', sans-serif;
 font-style: normal;
-font-weight: 400;
+font-weight: 100;
 }
 
 .right p {
-font-size: 1.1rem;
+font-size: 1.2rem;
 line-height: 1.8;
 margin-bottom: 1.5rem;
 }
 
 .right p:last-of-type {
 margin-bottom: 0;
+}
+
+#email:hover {
+color:#836953;
+}
+
+#github:hover {
+color:#66b3ff;
 }
 
 .container::before {
@@ -120,6 +128,7 @@ display: none;
 
 .left {
 border-bottom: 1px solid #2c2c2c;
+padding: 1rem;
 }
 
 .left h1 {

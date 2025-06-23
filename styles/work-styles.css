@@ -53,7 +53,7 @@ color: #2c2c2c;
 
 .left h1::after {
 content: " — Work Archive";
-font-size: clamp(1.6rem, 4vw);
+font-size: clamp(1.8rem, 4vw, 2.4rem);
 font-family: 'PPNeueMontreal-Medium', sans-serif;
 font-style: normal;
 font-weight: 400;
@@ -61,7 +61,7 @@ font-weight: 400;
 
 .right {
 flex: 1;
-padding: 3rem 2rem 2rem 2rem;
+padding: 2rem;
 display: flex;
 flex-direction: column;
 justify-content: flex-start; /* changed from space-between */
@@ -71,7 +71,7 @@ justify-content: flex-start; /* changed from space-between */
 width: 100%;
 height: 300px;           /* Set a fixed height */
 max-height: 300px;
-background-color: #f8f8f8;
+background-color: #fff;
 border-radius: 4px;
 display: flex;
 align-items: center;
@@ -93,12 +93,12 @@ height: auto;
 max-width: 100%;
 max-height: 300px;
 object-fit: contain;
-border-radius: 4px;
 display: block;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .preview-placeholder {
-color: #999;
+color: #fff;
 font-size: 0.9rem;
 }
 
@@ -132,13 +132,29 @@ color: #2c2c2c;
 text-decoration: underline;
 }
 
-.project-title a:hover {
-text-decoration: none;
+#bpost:hover {
+color: rgb(255, 47, 47);
+}
+
+#xbox:hover {
+color: #107c10;
+}
+
+#mcdo:hover {
+color: #FFC72C;
+}
+
+#auping:hover {
+color: rgb(57, 57, 203);
+}
+
+#aperol:hover {
+color: #FF5500;
 }
 
 .project-year {
-font-size: 1.1rem;
-color: #999;
+font-size: clamp(1.4rem, 2vw, 2.0rem);
+color: #2c2c2c;
 margin: 0;
 font-weight: 400;
 }
@@ -175,7 +191,7 @@ color: #2c2c2c;
 @media (max-width: 768px) {
 .container {
 flex-direction: column;
-min-height: auto;
+
 }
 
 .container::before {
@@ -185,9 +201,10 @@ display: none;
 .left {
 border-bottom: 1px solid #2c2c2c;
 justify-content: flex-start;
+padding: 1rem;
 }
 
-.right {
+/*.right {
 justify-content: flex-start;
 }
 
@@ -201,13 +218,13 @@ font-size: 2rem;
 
 .left h1::after {
 font-size: 2rem;
-}
+} 
 
 .project-item {
 flex-direction: column;
 align-items: flex-start;
 gap: 0.3rem;
-}
+}*/
 
 footer {
 font-size: 0.8rem;

@@ -26,7 +26,7 @@ padding: 2rem;
 .header {
 margin-bottom: 2rem;
 padding: 2rem;
-border-bottom: 1px solid #2c2c2c; /* Add this line */
+border-bottom: 1px solid #2c2c2c;
 }
 
 .name {
@@ -47,7 +47,7 @@ text-decoration: none;
 }
 
 .work-archive, .work-name {
-font-size: clamp(1.6rem, 4vw);
+font-size: clamp(1.8rem, 4vw, 2.4rem);
 font-family: 'PPNeueMontreal-Medium', sans-serif;
 font-style: normal;
 font-weight: 400;
@@ -59,12 +59,16 @@ text-decoration: none;
 }
 
 .work-archive a:hover {
-text-decoration: underline;
+text-decoration: none;
 }
 
-.project-description {
-font-size: 1.1rem;
-margin-bottom: 3rem;
+.project-description{
+    width: 90%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image-container {
@@ -80,6 +84,8 @@ height: auto;
 display: block;
 border-radius: 8px;
 box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+margin-left: auto;
+margin-right: auto;
 }
 
 footer {
