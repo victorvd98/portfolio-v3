@@ -43,7 +43,7 @@ text-decoration: none;
 }
 
 .name a:hover {
-text-decoration: none;
+text-decoration: underline;
 }
 
 .work-archive, .work-name {
@@ -59,7 +59,7 @@ text-decoration: none;
 }
 
 .work-archive a:hover {
-text-decoration: none;
+text-decoration: underline;
 }
 
 .project-description{

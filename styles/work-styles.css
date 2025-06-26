@@ -50,6 +50,9 @@ justify-content: flex-start;
 text-decoration: none;
 color: #2c2c2c;
 }
+#home-link:hover {
+    text-decoration: underline;
+}
 
 .left h1::after {
 content: " — Work Archive";
@@ -114,6 +117,7 @@ cursor: pointer;
 display: flex;
 justify-content: space-between;
 align-items: baseline;
+text-decoration: none;
 }
 
 .project-item:last-child {
@@ -121,35 +125,41 @@ margin-bottom: 0;
 }
 
 .project-title {
-font-size: clamp(1.4rem, 2vw, 2.0rem);
-font-weight: 400;
+font-family: 'PPMondwest-Regular', serif;
+font-style: italic;
+font-size: clamp(2rem, 2vw, 2.0rem);
 margin: 0;
 text-decoration: none;
 }
 
 .project-title a {
 color: #2c2c2c;
-text-decoration: underline;
+text-decoration: none;
 }
 
 #bpost:hover {
 color: rgb(255, 47, 47);
+text-decoration: underline;
 }
 
 #xbox:hover {
 color: #107c10;
+text-decoration: underline;
 }
 
 #mcdo:hover {
 color: #FFC72C;
+text-decoration: underline;
 }
 
 #auping:hover {
 color: rgb(57, 57, 203);
+text-decoration: underline;
 }
 
 #aperol:hover {
 color: #FF5500;
+text-decoration: underline;
 }
 
 .project-year {
