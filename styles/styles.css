@@ -36,11 +36,9 @@ body {
 }
 
 h1 {
-    font-family: 'PPMondwest-Regular', serif;
-    font-style: italic;
+    font: inherit;
     display: inline;
     color: #2c2c2c;
-    font-size: clamp(2.0rem, 4vw, 2.8rem);
 }
 
 /* Homepage navigation: one ASCII bonsai with the links set in its leaves */

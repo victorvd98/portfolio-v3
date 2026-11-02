@@ -61,6 +61,9 @@
     }
     measure();
     window.addEventListener('resize', measure);
+    document.fonts.ready.then(measure);
+    // if the page wasn't laid out yet when we measured, try again before drawing
+    const ready = () => (cw && lh) || (measure(), cw && lh);
 
     // --- rustle: briefly swap a leaf for another glyph
     function rustle(leaf, duration) {
@@ -88,7 +91,7 @@
 
     function dropLeaf() {
         const leaf = random(leaves);
-        if (!leaf.busy && !leaf.fallen) {
+        if (ready() && !leaf.busy && !leaf.fallen) {
             leaf.fallen = true;
             leaf.el.textContent = ' ';
             const el = document.createElement('span');
@@ -200,7 +203,7 @@
         setTimeout(wisp, 1200 + Math.random() * 2800);
         const frames = random(WISPS);
         const dir = Math.random() < 0.75 ? 1 : -1;     // mostly with the breeze, sometimes against
-        const spot = findSpot(frames, dir);
+        const spot = ready() && findSpot(frames, dir);
         if (!spot) return;                             // no room this time; try again later
 
         const el = document.createElement('span');
