@@ -2,9 +2,10 @@
 with the site's links spelled out inside the foliage.
 
 Usage (from the repo root):
-    python3 tools/bonsai.py              rewrite the tree inside index.html
-    python3 tools/bonsai.py --preview    print the tree as plain text instead
+    python3 _tools/bonsai.py              rewrite the tree inside index.html
+    python3 _tools/bonsai.py --preview    print the tree as plain text instead
 
+The folder starts with "_" so GitHub Pages (Jekyll) leaves it off the live site.
 The random seed is fixed, so the same settings always draw the same tree.
 Change the seed for a new variation, or edit PADS to move leaf pads and links.
 scripts/tree.js animates whatever this script puts in the page.
