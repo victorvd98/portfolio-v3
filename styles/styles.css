@@ -79,6 +79,13 @@ h1 {
     transition: opacity 1.5s ease;
 }
 
+.wisp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
 /* the links are spelled out in the leaves and only give themselves away on hover */
 .tree-link {
     font-weight: bold;
