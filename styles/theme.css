@@ -1,0 +1,49 @@
+/* Site-wide colours. scripts/theme.js sets data-theme on <html>. */
+:root {
+    --bg: #FFF;
+    --ink: #2c2c2c;
+    --muted: #555;
+    --shadow: rgba(0, 0, 0, 0.1);
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --bg: #161616;
+    --ink: #e8e6e3;
+    --muted: #9a9894;
+    --shadow: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+}
+
+body {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* footer: credits on the left, theme switch on the right (below on narrow screens) */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+}
+
+.theme-toggle {
+    white-space: nowrap;
+}
+
+/* footer switch: "Theme: light / dark" */
+.theme-toggle button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.theme-toggle button[aria-pressed="true"] {
+    text-decoration: none;
+    cursor: default;
+}

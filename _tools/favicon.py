@@ -3,7 +3,7 @@
 Usage (from the repo root):
     python3 _tools/favicon.py
 
-Writes assets/favicon.svg (used by modern browsers, adapts to dark tab bars)
+Writes assets/favicon.svg (used by modern browsers)
 and assets/favicon.png (fallback), both from the same curve below.
 """
 import os
@@ -17,7 +17,7 @@ START = (4, 19)
 CURVES = [((8, 10), (13, 10), (16, 16)),
           ((19, 22), (24, 22), (28, 13))]
 STROKE = 4.2
-INK, INK_DARK = "#2c2c2c", "#f0f0f0"
+INK = "#FFFFFF"
 
 
 def svg():
@@ -25,11 +25,7 @@ def svg():
     path = (f"M{START[0]} {START[1]} C{c1[0]} {c1[1]} {c2[0]} {c2[1]} {e1[0]} {e1[1]} "
             f"C{d1[0]} {d1[1]} {d2[0]} {d2[1]} {e2[0]} {e2[1]}")
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <style>
-    path {{ stroke: {INK}; }}
-    @media (prefers-color-scheme: dark) {{ path {{ stroke: {INK_DARK}; }} }}
-  </style>
-  <path d="{path}" fill="none" stroke-width="{STROKE}" stroke-linecap="round"/>
+  <path d="{path}" fill="none" stroke="{INK}" stroke-width="{STROKE}" stroke-linecap="round"/>
 </svg>
 """
 

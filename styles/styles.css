@@ -9,9 +9,9 @@
 }
 
 body {
-    background-color: #FFF;
+    background-color: var(--bg);
     min-height: 100vh;
-    color: #2c2c2c;
+    color: var(--ink);
     font-family: 'PPNeueMontreal-Medium', serif;
     font-weight: 100;
     margin: 0;
@@ -26,7 +26,7 @@ body {
     font-size: clamp(1.4rem, 3vw, 1.8rem);
     line-height: 1.5;
     text-align: left;
-    color: #2c2c2c;
+    color: var(--ink);
 }
 
 /* Neue Montreal has no CJK glyphs; use a matching sans at a medium weight */
@@ -38,7 +38,7 @@ body {
 h1 {
     font: inherit;
     display: inline;
-    color: #2c2c2c;
+    color: var(--ink);
 }
 
 /* Homepage navigation: one ASCII bonsai with the links set in its leaves */
@@ -58,7 +58,7 @@ h1 {
     /* ~96 columns at ~0.6em each: scale so the whole tree fits the viewport */
     font-size: min(calc((100vw - 2rem) / 58), 18px);
     line-height: 1.15;
-    color: #2c2c2c;
+    color: var(--ink);
     text-align: left;
     position: relative;
     /* it's a picture, not text: normal arrow instead of the text cursor */
@@ -105,12 +105,12 @@ footer {
     max-width: none;
     text-align: left;
     padding: 2rem;
-    border-top: 1px solid #2c2c2c;
-    color: #2c2c2c;
+    border-top: 1px solid var(--ink);
+    color: var(--ink);
 }
 
 footer a {
-    color: #2c2c2c;
+    color: var(--ink);
     text-decoration: underline;
 }
 

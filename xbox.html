@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Victor Van Damme - Xbox</title>
+<link rel="stylesheet" href="styles/theme.css" />
+<script src="scripts/theme.js"></script>
 <link rel="stylesheet" href="styles/project-styles.css">
 <link rel="icon" href="assets/favicon.png" type="image/png" sizes="64x64" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -64,9 +66,12 @@
 </div>
 
 <footer>
-  Credits: This site was designed and developed by me using basic HTML/CSS/JavaScript.<br />
-  The text is set in Mondwest and Neue Montreal, both by <a href="https://pangrampangram.com/">Pangram Pangram</a>.<br />
-  The ASCII art is my own but inspired by the work of <a href="https://oldcompcz.github.io/jgs/joan_stark/index-2.html">Joan Stark</a>.
+  <div class="credits">
+      Credits: This site was designed and developed by me using basic HTML/CSS/JavaScript.<br />
+      The text is set in Mondwest and Neue Montreal, both by <a href="https://pangrampangram.com/">Pangram Pangram</a>.<br />
+      The ASCII art is my own but inspired by the work of <a href="https://oldcompcz.github.io/jgs/joan_stark/index-2.html">Joan Stark</a>.
+  </div>
+  <span class="theme-toggle">Theme: <button type="button" data-theme-choice="light">light</button> / <button type="button" data-theme-choice="dark">dark</button></span>
 </footer>
 </body>
 </html>

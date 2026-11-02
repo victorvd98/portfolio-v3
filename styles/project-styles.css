@@ -12,8 +12,8 @@ body {
 margin: 0;
 padding: 0;
 font-family: 'PPNeueMontreal-Medium', sans-serif;
-background-color: #ffffff;
-color: #2c2c2c;
+background-color: var(--bg);
+color: var(--ink);
 line-height: 1.6;
 }
 
@@ -26,19 +26,19 @@ padding: 2rem;
 .header {
 margin-bottom: 2rem;
 padding: 2rem;
-border-bottom: 1px solid #2c2c2c;
+border-bottom: 1px solid var(--ink);
 }
 
 .name {
     font-family: 'PPMondwest-Regular', serif;
     font-style: italic;
     display: inline;
-    color: #2c2c2c;
+    color: var(--ink);
     font-size: clamp(2.0rem, 4vw, 2.8rem);
 }
 
 .name a {
-color: #2c2c2c;
+color: var(--ink);
 text-decoration: none;
 }
 
@@ -54,7 +54,7 @@ font-weight: 400;
 }
 
 .work-archive a {
-color: #2c2c2c;
+color: var(--ink);
 text-decoration: none;
 }
 
@@ -83,7 +83,7 @@ width: 90%;
 height: auto;
 display: block;
 border-radius: 8px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+box-shadow: 0 4px 12px var(--shadow);
 margin-left: auto;
 margin-right: auto;
 }
@@ -94,12 +94,12 @@ footer {
     max-width: none;
     text-align: left;
     padding: 2rem;
-    border-top: 1px solid #2c2c2c;
-    color: #2c2c2c;
+    border-top: 1px solid var(--ink);
+    color: var(--ink);
 }
 
 footer a {
-    color: #2c2c2c;
+    color: var(--ink);
     text-decoration: underline;
 }
 
