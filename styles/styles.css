@@ -29,6 +29,12 @@ body {
     color: #2c2c2c;
 }
 
+/* Neue Montreal has no CJK glyphs; use a matching sans at a medium weight */
+.intro-zh {
+    font-family: 'PPNeueMontreal-Medium', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    font-weight: 500;
+}
+
 h1 {
     font-family: 'PPMondwest-Regular', serif;
     font-style: italic;
