@@ -29,10 +29,12 @@ body {
     color: var(--ink);
 }
 
-/* Neue Montreal has no CJK glyphs; use a matching sans at a medium weight */
+/* Neue Montreal has no CJK glyphs; use a matching sans. PingFang has no weight
+   between Regular and Medium, so thicken Regular slightly with a hairline stroke */
 .intro-zh {
     font-family: 'PPNeueMontreal-Medium', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
+    -webkit-text-stroke: 0.3px currentColor;
 }
 
 h1 {
@@ -64,6 +66,11 @@ h1 {
     /* it's a picture, not text: normal arrow instead of the text cursor */
     cursor: default;
     user-select: none;
+}
+
+/* inline-block so scripts/tree.js can nudge single leaves with transform */
+.leaf {
+    display: inline-block;
 }
 
 /* leaves dropped by scripts/tree.js drift down on top of the tree */

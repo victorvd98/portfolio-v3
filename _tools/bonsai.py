@@ -155,6 +155,9 @@ for cx, cy, rx, ry, label, href, colour in PADS:
     for i, ch in enumerate(label):
         put(x0 + i, y, ch, leaf_class())
         link_at[(x0 + i, y)] = idx
+    # a clearing either side so the title reads against the leaves
+    for x in (x0 - 1, x0 + len(label)):
+        chars[y][x] = " "
 
 # ------------------------------------------------------------------ output
 out_html, out_txt = [], []

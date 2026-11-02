@@ -89,37 +89,39 @@
     layer.setAttribute('aria-hidden', 'true');
     pre.appendChild(layer);
 
-    function dropLeaf() {
-        const leaf = random(leaves);
-        if (ready() && !leaf.busy && !leaf.fallen) {
-            leaf.fallen = true;
-            leaf.el.textContent = ' ';
-            const el = document.createElement('span');
-            el.className = 'falling-leaf';
-            el.textContent = LEAF;
-            layer.appendChild(el);
+    function fall(leaf) {
+        if (!ready() || leaf.busy || leaf.fallen) return;
+        leaf.fallen = true;
+        leaf.el.textContent = ' ';
+        const el = document.createElement('span');
+        el.className = 'falling-leaf';
+        el.textContent = LEAF;
+        layer.appendChild(el);
 
-            let x = leaf.col, y = leaf.row, sway = Math.random() < 0.5 ? 1 : -1;
-            const place = () => { el.style.transform = `translate(${x * cw}px, ${y * lh}px)`; };
+        let x = leaf.col, y = leaf.row, sway = Math.random() < 0.5 ? 1 : -1;
+        const place = () => { el.style.transform = `translate(${x * cw}px, ${y * lh}px)`; };
+        place();
+        const timer = setInterval(() => {
+            y += 1;
+            if (Math.random() < 0.5) x += sway;
+            if (Math.random() < 0.25) sway = -sway;
             place();
-            const timer = setInterval(() => {
-                y += 1;
-                if (Math.random() < 0.5) x += sway;
-                if (Math.random() < 0.25) sway = -sway;
-                place();
-                if (y >= rows - 1) {
-                    clearInterval(timer);
-                    setTimeout(() => { el.style.opacity = '0'; }, 1500);
-                    setTimeout(() => el.remove(), 3000);
-                }
-            }, 220);
+            if (y >= rows - 1) {
+                clearInterval(timer);
+                setTimeout(() => { el.style.opacity = '0'; }, 1500);
+                setTimeout(() => el.remove(), 3000);
+            }
+        }, 220);
 
-            // the canopy grows the leaf back
-            setTimeout(() => { leaf.el.textContent = LEAF; leaf.fallen = false; }, 8000);
-        }
-        setTimeout(dropLeaf, 1500 + Math.random() * 3000);
+        // the canopy grows the leaf back
+        setTimeout(() => { leaf.el.textContent = LEAF; leaf.fallen = false; }, 8000);
     }
-    setTimeout(dropLeaf, 1500);
+
+    function dropLeaf() {
+        fall(random(leaves));
+        setTimeout(dropLeaf, 6000 + Math.random() * 8000);
+    }
+    setTimeout(dropLeaf, 3000);
 
     // wisps of wind: each one appears in place, unfurls over a few frames while
     // drifting a little, then breaks up into dots and dissipates
@@ -225,21 +227,81 @@
     }
     setTimeout(wisp, 800);
 
-    // 4. cursor: leaves near the pointer stir as it moves
-    let pending = null;
+    // 4. cursor: leaves shiver as the pointer brushes past, and a quick swipe
+    //    can knock one loose. Each leaf is a little spring.
+    const RX = 5, RY = 2.5;     // reach of the cursor, in columns / rows
+    const moving = new Set();   // leaves currently off their resting spot
+    let mouse = null;           // pointer position in cells, or null when away
+    let last = null, frame = null, lastDrop = 0;
+
+    // how strongly a leaf feels the cursor (0..1)
+    function touch(leaf) {
+        const d = Math.hypot((leaf.col + 0.5 - mouse.c) / RX, (leaf.row + 0.5 - mouse.r) / RY);
+        return d >= 1 ? null : { f: 1 - d };
+    }
+
+    function near(fn) {
+        const c = Math.floor(mouse.c), r = Math.floor(mouse.r);
+        for (let dy = -Math.ceil(RY); dy <= Math.ceil(RY); dy++) {
+            for (let dx = -RX; dx <= RX; dx++) {
+                const leaf = grid.get((c + dx) + ',' + (r + dy));
+                if (!leaf || leaf.fallen) continue;
+                const t = touch(leaf);
+                if (t) fn(leaf, t);
+            }
+        }
+    }
+
+    let then = 0;
+    function tick(now) {
+        frame = null;
+        // step the springs at a fixed 60 steps a second, whatever the screen's refresh rate
+        const steps = then ? Math.min(4, Math.round((now - then) / 16.7)) : 1;
+        then = now;
+        for (const leaf of moving) {
+            for (let s = 0; s < steps; s++) {
+                leaf.vx = (leaf.vx - leaf.x * 0.12) * 0.78;
+                leaf.vy = (leaf.vy - leaf.y * 0.12) * 0.78;
+                leaf.x += leaf.vx;
+                leaf.y += leaf.vy;
+            }
+            if (leaf.fallen || (Math.abs(leaf.x) + Math.abs(leaf.y) + Math.abs(leaf.vx) + Math.abs(leaf.vy) < 0.05)) {
+                leaf.el.style.transform = '';
+                moving.delete(leaf);
+            } else {
+                leaf.el.style.transform = `translate(${leaf.x.toFixed(2)}px, ${leaf.y.toFixed(2)}px)`;
+            }
+        }
+        if (moving.size) frame = requestAnimationFrame(tick);
+        else then = 0;
+    }
+    const wake = () => { if (!frame) frame = requestAnimationFrame(tick); };
+
     pre.addEventListener('mousemove', (e) => {
-        if (pending) return;
-        pending = requestAnimationFrame(() => {
-            pending = null;
-            const box = pre.getBoundingClientRect();
-            const c = Math.floor((e.clientX - box.left) / cw);
-            const r = Math.floor((e.clientY - box.top) / lh);
-            for (let dy = -2; dy <= 2; dy++) {
-                for (let dx = -4; dx <= 4; dx++) {
-                    const leaf = grid.get((c + dx) + ',' + (r + dy));
-                    if (leaf && (dx / 4) ** 2 + (dy / 2) ** 2 <= 1 && Math.random() < 0.5) rustle(leaf, 400);
-                }
+        if (!ready()) return;
+        const box = pre.getBoundingClientRect();
+        mouse = { c: (e.clientX - box.left) / cw, r: (e.clientY - box.top) / lh };
+        const now = performance.now();
+        // speed in cells per millisecond decides how hard the leaves shiver
+        const speed = last ? Math.hypot(mouse.c - last.c, mouse.r - last.r) / Math.max(1, now - last.t) : 0;
+        last = { c: mouse.c, r: mouse.r, t: now };
+        const kick = Math.min(1, speed * 12);
+
+        near((leaf, t) => {
+            if (!moving.has(leaf)) {
+                leaf.x = leaf.x || 0; leaf.y = leaf.y || 0;
+                leaf.vx = leaf.vx || 0; leaf.vy = leaf.vy || 0;
+                moving.add(leaf);
+            }
+            leaf.vx += (Math.random() - 0.5) * cw * 0.35 * kick * t.f;
+            leaf.vy += (Math.random() - 0.5) * lh * 0.2 * kick * t.f;
+            // a fast swipe right through the canopy now and then shakes one loose
+            if (speed > 0.06 && t.f > 0.5 && now - lastDrop > 400 && Math.random() < 0.04) {
+                lastDrop = now;
+                fall(leaf);
             }
         });
+        wake();
     });
+    pre.addEventListener('mouseleave', () => { mouse = null; last = null; wake(); });
 })();
