@@ -61,6 +61,9 @@ h1 {
     color: #2c2c2c;
     text-align: left;
     position: relative;
+    /* it's a picture, not text: normal arrow instead of the text cursor */
+    cursor: default;
+    user-select: none;
 }
 
 /* leaves dropped by scripts/tree.js drift down on top of the tree */
