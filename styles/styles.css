@@ -68,11 +68,6 @@ h1 {
     user-select: none;
 }
 
-/* inline-block so scripts/tree.js can nudge single leaves with transform */
-.leaf {
-    display: inline-block;
-}
-
 /* leaves dropped by scripts/tree.js drift down on top of the tree */
 .falling-layer {
     position: absolute;
