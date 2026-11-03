@@ -25,8 +25,8 @@ INDEX = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "index.ht
 # ground). The site currently renders the tree in a single colour.
 COLOURS = False
 
-ABOUT = ("About", "about.html", "#7dd87d")
-WORK = ("Work Archive", "work.html", "#ff8a94")
+ABOUT = ("About", "/about/", "#7dd87d")
+WORK = ("Work Archive", "/work/", "#ff8a94")
 GITHUB = ("GitHub", "https://github.com/victorvd98", "#66b3ff")
 ARENA = ("Are.na", "https://www.are.na/victor-van-damme/", "#ffcc66")
 EMAIL = ("E-mail", "mailto:victor.van.damme@icloud.com", "#836953")

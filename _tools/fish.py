@@ -31,8 +31,8 @@ BENDS = (0.0, math.radians(14), math.radians(-14))   # tail at rest, flicked eac
 SEED = 4
 
 LINKS = [                                   # head to tail along the body
-    ("About", "about.html", "#7dd87d"),
-    ("Work Archive", "work.html", "#ff8a94"),
+    ("About", "/about/", "#7dd87d"),
+    ("Work Archive", "/work/", "#ff8a94"),
     ("GitHub", "https://github.com/victorvd98", "#66b3ff"),
     ("Are.na", "https://www.are.na/victor-van-damme/", "#ffcc66"),
     ("E-mail", "mailto:victor.van.damme@icloud.com", "#836953"),

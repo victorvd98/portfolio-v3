@@ -17,7 +17,7 @@ body {
 .container {
 display: flex;
 flex-direction: row;
-min-height: calc(100vh - 120px);
+flex: 1 0 auto;
 box-sizing: border-box;
 position: relative;
 }
@@ -133,6 +133,7 @@ padding: 1.5rem;
 }
 
 .left {
+flex: none;              /* stacked: the heading keeps its height, spare space goes below the content */
 border-bottom: 1px solid var(--ink);
 }
 

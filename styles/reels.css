@@ -1,0 +1,130 @@
+/* Reel carousel for project pages with vertical (9:16) social videos.
+   scripts/reels.js plays the centred one and wires up the controls. */
+
+.reels {
+    margin: 0 auto 4rem;
+    width: 90%;
+}
+
+/* "Peugeot 2008", "Peugeot 5008": one heading per carousel */
+.reels-title {
+    font: inherit;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 400;
+    margin: 0 0 1.5rem;
+}
+
+/* a row of reels that scrolls sideways and snaps each one to the centre */
+.reels-track {
+    position: relative;      /* reels.js measures each reel's offsetLeft against the track */
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* room either side so the first and last reels can sit in the middle too */
+    padding: 0 calc(50% - var(--reel-w) / 2);
+    --reel-w: min(calc(70vh * 9 / 16), 22rem, 70vw);
+}
+
+.reels-track::-webkit-scrollbar {
+    display: none;
+}
+
+.reels-track:focus-visible {
+    outline: 1px solid var(--ink);
+    outline-offset: 0.5rem;
+}
+
+.reel {
+    flex: 0 0 var(--reel-w);
+    aspect-ratio: 9 / 16;
+    margin: 0;
+    scroll-snap-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow);
+    background: var(--muted);
+    opacity: 0.45;
+    transform: scale(0.94);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.reel.active {
+    opacity: 1;
+    transform: none;
+}
+
+.reel video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* until the video file exists, show where it will go */
+.reel.missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px dashed var(--ink);
+    box-shadow: none;
+}
+
+.reel.missing video {
+    display: none;
+}
+
+.reel.missing::after {
+    content: attr(data-name);
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* prev / counter / next on the left, sound switch on the right */
+.reels-controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+}
+
+.reels-controls button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.reels-controls button:disabled,
+.reels-sound button[aria-pressed="true"] {
+    text-decoration: none;
+    cursor: default;
+}
+
+.reels-controls button:disabled {
+    opacity: 0.35;
+}
+
+.reels-count {
+    margin: 0 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 768px) {
+    .reels {
+        width: 100%;
+    }
+
+    .reels-track {
+        --reel-w: min(calc(70vh * 9 / 16), 75vw);
+        gap: 1rem;
+    }
+}

@@ -24,6 +24,15 @@ html {
 
 body {
     transition: background-color 0.2s ease, color 0.2s ease;
+    /* every page is at least as tall as the window, with the footer at the
+       bottom: short pages (or zooming out) never leave it floating mid-screen */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > footer {
+    margin-top: auto;
 }
 
 /* footer: credits on the left, theme switch on the right (below on narrow screens) */

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victor Van Damme - Work Archive</title>
+<link rel="stylesheet" href="/styles/theme.css" />
+<script src="/scripts/theme.js"></script>
+<link rel="stylesheet" href="/styles/work-styles.css" >
+<link rel="icon" href="/assets/favicon.png?v=2" type="image/png" sizes="64x64" />
+<link rel="icon" href="/assets/favicon.svg?v=2" type="image/svg+xml" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBD67E0H62"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-WBD67E0H62');
+    </script>
+    
+</head>
+<body>
+<div class="container">
+<div class="left">
+<h1><a href="/" id="home-link">Victor Van Damme</a></h1>
+</div>
+<div class="right">
+<ul class="project-list">
+<li class="project-item" 
+    onmouseenter="showPreview('/assets/previews/bpost.webp')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="/work/bpost/" id="bpost">Bpost</a></h2>
+<p class="project-year">2025</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('/assets/previews/xbox.webp')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="/work/xbox/" id="xbox">Xbox</a></h2>
+<p class="project-year">2025</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('/assets/previews/mcdo.webp')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="/work/mcdonalds/" id="mcdo">McDonald's</a></h2>
+<p class="project-year">2025</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('/assets/previews/auping.webp')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="/work/auping/" id="auping">Auping</a></h2>
+<p class="project-year">2024</p>
+</li>
+
+<li class="project-item" 
+    onmouseenter="showPreview('/assets/previews/aperol.webp')" 
+    onmouseleave="hidePreview()">
+<h2 class="project-title"><a href="/work/aperol/" id="aperol">Aperol</a></h2>
+<p class="project-year">2025</p>
+</li>
+</ul>
+<div class="preview-container" id="previewContainer">
+<div class="preview-placeholder">Hover over a project to see preview</div>
+</div>
+</div>
+</div>
+    <footer>
+        <div class="credits">
+            Credits: This site was designed and developed by me using basic HTML/CSS/JavaScript.<br />
+            The text is set in Neue Montreal by <a href="https://pangrampangram.com/">Pangram
+                Pangram</a>.<br />
+            The ASCII art is my own but inspired by the work of <a
+                href="https://oldcompcz.github.io/jgs/joan_stark/index-2.html">Joan Stark</a>.
+        </div>
+        <span class="theme-toggle">Theme: <button type="button" data-theme-choice="light">light</button> / <button type="button" data-theme-choice="dark">dark</button></span>
+    </footer>
+
+<script>
+function showPreview(imageUrl) {
+const container = document.getElementById('previewContainer');
+container.innerHTML = `<img src="${imageUrl}" alt="Project preview" class="preview-image">`;
+container.classList.add('visible');
+}
+
+function hidePreview() {
+const container = document.getElementById('previewContainer');
+container.classList.remove('visible');
+setTimeout(() => {
+if (!container.classList.contains('visible')) {
+container.innerHTML = '<div class="preview-placeholder">Hover over a project to see preview</div>';
+}
+}, 300);
+}
+</script>
+</body>
+</html>

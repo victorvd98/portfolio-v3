@@ -13,7 +13,8 @@ line-height: 1.6;
 }
 
 .container {
-max-width: 100% vw;
+width: 100%;             /* fill the page; never grow to fit wide content like a row of reels */
+box-sizing: border-box;
 margin: 0 auto;
 padding: 2rem;
 }
