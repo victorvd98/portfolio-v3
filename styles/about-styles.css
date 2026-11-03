@@ -126,9 +126,14 @@ min-height: auto;
 display: none;
 }
 
+.left,
+.right,
+footer {
+padding: 1.5rem;
+}
+
 .left {
 border-bottom: 1px solid var(--ink);
-padding: 1rem;
 }
 
 .left h1 {

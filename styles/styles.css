@@ -52,8 +52,8 @@ h1 {
 .tree pre {
     margin: 0;
     font-family: monospace;
-    /* ~96 columns at ~0.6em each: scale so the whole tree fits the viewport */
-    font-size: min(calc((100vw - 2rem) / 58), 18px);
+    /* ~96 columns at ~0.6em each and ~40 lines tall: as large as fits the window */
+    font-size: min(calc((100vw - 2rem) / 58), calc(100vh / 46), 2.2rem);
     line-height: 1.15;
     color: var(--ink);
     text-align: left;
@@ -61,6 +61,51 @@ h1 {
     /* it's a picture, not text: normal arrow instead of the text cursor */
     cursor: default;
     user-select: none;
+}
+
+/* phones and narrow windows get a fish instead (~46 columns, ~30 lines) */
+.tree pre.fish {
+    display: none;
+    font-size: min(calc((100vw - 3rem) / 27.6), calc(100vh / 38), 1.4rem);
+    transform-origin: 50% 60%;
+}
+
+@media (max-width: 700px) {
+    .tree pre.tree-wide {
+        display: none;
+    }
+
+    .tree pre.fish {
+        display: block;
+    }
+
+    /* let the fish leave the ground when it flops, without a sideways scrollbar */
+    .tree {
+        overflow-x: clip;
+        overflow-y: visible;
+    }
+}
+
+/* scripts/fish.js: a quick shiver, and a flop that leaves the ground and lands */
+.fish.twitch {
+    animation: fish-twitch 0.35s ease-in-out;
+}
+
+.fish.flop {
+    animation: fish-flop 1.1s cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+@keyframes fish-twitch {
+    25% { transform: rotate(-1.5deg); }
+    60% { transform: rotate(1deg); }
+}
+
+@keyframes fish-flop {
+    25% { transform: translateY(-9%) rotate(-9deg); }
+    45% { transform: translateY(-11%) rotate(6deg); }
+    62% { transform: translateY(0) rotate(3deg); }
+    72% { transform: translateY(-2.5%) rotate(-2deg); }
+    84% { transform: translateY(0) rotate(1deg); }
 }
 
 /* leaves dropped by scripts/tree.js drift down on top of the tree */
@@ -131,5 +176,12 @@ a {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+/* phones: one 1.5rem gutter for everything */
+@media (max-width: 768px) {
+    .intro,
+    footer {
+        padding: 1.5rem;
     }
 }

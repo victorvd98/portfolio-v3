@@ -100,8 +100,19 @@ footer a {
 }
 
 @media (max-width: 768px) {
-.container {
+.container,
+.header,
+footer {
 padding: 1.5rem;
+}
+
+.header {
+margin-bottom: 0;
+}
+
+.caseboard,
+.project-description {
+width: 100%;
 }
 
 .name {

@@ -15,6 +15,13 @@
     color-scheme: dark;
 }
 
+/* Base text size. 16px up to a ~1280px-wide window, then it grows with the
+   window, so wide screens (or zooming out) keep the same proportions instead
+   of leaving small text floating in empty space. Every rem scales with it. */
+html {
+    font-size: clamp(16px, calc(9px + 0.55vw), 26px);
+}
+
 body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
