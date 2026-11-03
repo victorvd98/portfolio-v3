@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'PPMondwest-Regular';
-    src: url(./fonts/PPMondwest-Regular.otf) format('opentype');
-}
-
-@font-face {
     font-family: 'PPNeueMontreal-Medium';
     src: url(./fonts/PPNeueMontreal-Medium.otf) format('opentype');
 }

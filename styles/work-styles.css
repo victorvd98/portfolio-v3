@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'PPMondwest-Regular';
-    src: url(./fonts/PPMondwest-Regular.otf) format('opentype');
-}
-
-@font-face {
     font-family: 'PPNeueMontreal-Medium';
     src: url(./fonts/PPNeueMontreal-Medium.otf) format('opentype');
 }
@@ -39,11 +34,12 @@ justify-content: flex-start;
 }
 
 .left h1 {
-    font-family: 'PPMondwest-Regular', serif;
-    font-style: italic;
+    font-family: 'PPNeueMontreal-Medium', sans-serif;
+    font-style: normal;
+    font-weight: 400;
     display: inline;
     color: var(--ink);
-    font-size: clamp(2.0rem, 4vw, 2.8rem);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
 }
 
 #home-link {
@@ -125,8 +121,9 @@ margin-bottom: 0;
 }
 
 .project-title {
-font-family: 'PPMondwest-Regular', serif;
-font-style: italic;
+font-family: 'PPNeueMontreal-Medium', sans-serif;
+font-style: normal;
+font-weight: 400;
 font-size: clamp(2rem, 2vw, 2.0rem);
 margin: 0;
 text-decoration: none;
